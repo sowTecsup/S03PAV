@@ -3,41 +3,50 @@ using UnityEngine;
 public class BaseStats 
 {
     // Relación de Composición
-    public int health 
-    {
-        get { return health; }
-        set
-        {
-            if (value < 0)
-                health = 0;
-            else
-                health = value;
-        }
-    }
-
-
-
-
+    private int health;
     private int power;
-    public int Power => power;
-    public void SetPower(int power)
-    {
-        this.power = power; 
-    }
+    private int speed;
+    private int knockback;
+    private int xp;
 
-    public int Speed;
-    public int Knockback;
-    public int XP;
 
     public BaseStats(int health , int power, int speed, int knockback , int xp)
     {
-        this.health = health;
-        this.power = power;
-        Speed = speed;
-        Knockback = knockback;
-        XP = xp;
+        SetHealth(health);
+        SetPower(power);
+        SetSpeed(speed);
+        SetKnockback(knockback);
+        SetXP(xp);
     }
-   
+    public void SetPower(int power)
+    {
+        this.power = power;
+    }
+    public void SetHealth(int health)
+    {
+        if(health <= 0)
+            health = 0;
+
+        this.health = health;
+    }
+    public void SetSpeed(int speed)
+    {
+        this.speed = speed;
+    }
+    public void SetKnockback(int knockback)
+    {
+        this.knockback = knockback;
+    }
+    public void SetXP(int xp)
+    {
+        this.xp = xp;
+    }
+    public int Health => health;
+    public int Power => power;
+    public int Speed => speed;
+    public int Knockback => knockback;
+    public int XP => xp;
+
     ~BaseStats()
     {
         Debug.Log("Eliminado por el garbage collector");
